@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+         .start{
+             background-color:blue;
+         }
+         .good{
+             background-color:green;
+         }
+         .bad{
+             background-color:red;
+         }
+        </style>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>
+        <script type="text/javascript">
+         $(document).ready(function(){
+         $('#reset').click(function(){
+             startTime = moment();
+             run = true;
+             $('#container').removeClass('bad');
+             $('#container').addClass('good');
+             runTimer();
+         });
+         });
+         var startTime;
+         var limit = 600000;
+         var run = false;
+         function runTimer(){
+         window.setTimeout(function(){
+             var difference = moment(moment().diff(startTime));
+             if (difference >= limit){
+                 $('#container').addClass('bad');
+                 run = false;
+             }
+             $('#timerblock').text(difference.format("m:s"));
+             if (run){
+                 runTimer();
+             }
+         },1000);
+         }
+        </script>
+
+    </head>
+    <body>
+        <div id="container" class="start" style="font-size:100px; width:100%; height:100%; text-align:center; vertical-align:center; padding-top:500px;">
+            <span id="timerblock"></span><br/>
+
+        <button style="font-size:30px;" id="reset">Start</button>
+        </div>
+
+    </body>
+</html>
