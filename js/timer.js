@@ -7,8 +7,7 @@ define(['states'], function (states) {
         var _elapsed = 0;
         var _state = states.STOPPED;
         var _interval;
-        var _tickEvent = document.createEvent('Event');
-        _tickEvent.initEvent('tick', true, true);
+        var _callBack;
 
         function padZero(unit) {
             return unit < 10 ? '0' + unit : unit;
@@ -20,14 +19,17 @@ define(['states'], function (states) {
         }
 
         return {
-            start: function () {
+            start: function (callBack) {
+                if (callBack && typeof(callBack) === 'function') {
+                    _callBack = callBack;
+                }
                 if (_state === states.STOPPED || _state === states.PAUSED) {
                     _interval = setInterval(function () {
                         _elapsed += 1;
-                        document.dispatchEvent(_tickEvent);
+                        if (_callBack) _callBack();
                     }, 1000);
                     _state = states.RUNNING;
-                    document.dispatchEvent(_tickEvent);
+                    if (_callBack) _callBack();
                 }
             },
 

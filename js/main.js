@@ -24,7 +24,7 @@
                 switch (timer.state()) {
                     case states.STOPPED:
                     {
-                        timer.start();
+                        timer.start(updateTimer);
                         $(this).text('Pause');
                         container.removeClass('timeout').addClass('running');
                         break;
@@ -54,16 +54,15 @@
                 $(this).attr('disabled', 'disabled');
             });
 
-            $(document).on('tick', function () {
+            function updateTimer() {
                 timerDisplay.text(timer.formattedTime());
-
                 if (timer.elapsed() >= timeout) {
                     timer.stop();
                     container.removeClass('running').addClass('timeout');
                     runButton.text('Start');
                     stopButton.attr('disabled', 'disabled');
                 }
-            });
+            }
 
             runButton.removeAttr('disabled');
         });
