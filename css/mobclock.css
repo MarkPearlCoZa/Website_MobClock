@@ -21,6 +21,7 @@ html, body {
     width: 100%;
     font-family: mobClock;
     color: white;
+    text-shadow: 2px 2px #000000;
 }
 
 #actions {
