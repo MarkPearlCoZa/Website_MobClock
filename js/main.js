@@ -5,11 +5,12 @@
     require.config({
         paths: {
             'jquery': 'https://code.jquery.com/jquery-2.2.0.min',
-            'timer': '../js/timer'
+            'timer': '../js/timer',
+            'states': '../js/states'
         }
     });
 
-    require(['jquery', 'timer'], function ($, timer) {
+    require(['jquery', 'timer', 'states'], function ($, timer, states) {
         $(function () {
 
             var container = $('#container');
@@ -21,21 +22,21 @@
             runButton.click(function () {
                 container.removeClass('init');
                 switch (timer.state()) {
-                    case 'stopped':
+                    case states.STOPPED:
                     {
                         timer.start();
                         $(this).text('Pause');
                         container.removeClass('timeout').addClass('running');
                         break;
                     }
-                    case 'running':
+                    case states.RUNNING:
                     {
                         timer.pause();
                         $(this).text('Resume');
                         container.removeClass('running').addClass('paused');
                         break;
                     }
-                    case 'paused':
+                    case states.PAUSED:
                     {
                         timer.start();
                         $(this).text('Pause');

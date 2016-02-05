@@ -1,11 +1,11 @@
 /**
  * Created by Gareth.Stephenson1 on 2016-02-03.
  */
-define(function () {
+define(['states'], function (states) {
 
     return (function () {
         var _elapsed = 0;
-        var _state = 'stopped';
+        var _state = states.STOPPED;
         var _interval;
         var _tickEvent = document.createEvent('Event');
         _tickEvent.initEvent('tick', true, true);
@@ -14,26 +14,29 @@ define(function () {
             return unit < 10 ? '0' + unit : unit;
         }
 
+        function ceaseIntervalWithStatus(interval, state) {
+            clearInterval(interval);
+            _state = state;
+        }
+
         return {
             start: function () {
-                if (_state === 'stopped' || _state === 'paused') {
+                if (_state === states.STOPPED || _state === states.PAUSED) {
                     _interval = setInterval(function () {
                         _elapsed += 1;
                         document.dispatchEvent(_tickEvent);
                     }, 1000);
-                    _state = 'running';
+                    _state = states.RUNNING;
                     document.dispatchEvent(_tickEvent);
                 }
             },
 
             pause: function () {
-                clearInterval(_interval);
-                _state = 'paused';
+                ceaseIntervalWithStatus(_interval, states.PAUSED);
             },
 
             stop: function () {
-                clearInterval(_interval);
-                _state = 'stopped';
+                ceaseIntervalWithStatus(_interval, states.STOPPED);
                 _elapsed = 0;
             },
 
