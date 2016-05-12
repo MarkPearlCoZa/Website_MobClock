@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MobClock</title>
-    <link rel="stylesheet" type="text/css" href="css/mobclock.css"/>
-</head>
-<body>
-<div id="container" class="init">
-    <div id="timer">00:00</div>
-    <div id="actions">
-        <button id="runButton" class="actionButton" disabled="disabled">Start</button>
-        <button id="stopButton" class="actionButton" disabled="disabled">Stop</button>
-    </div>
-</div>
-<script type="text/javascript" src="lib/require.js" data-main="js/main"></script>
-</body>
+<html>
+	<head>
+		<script src="js/react.js"></script>
+		<script src="js/react-dom.js"></script>
+      		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+		<script src="js/components.js" type="text/babel"></script>
+		<link rel="stylesheet" type="text/css" href="css/mobclock.css"/>
+	<head>
+	<body>
+		<main></main>
+	</body>
+	<script type="text/javascript" src="lib/require.js" data-main="js/main"></script>
 </html>
