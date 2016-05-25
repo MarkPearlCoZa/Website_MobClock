@@ -6,11 +6,12 @@
         paths: {
             'jquery': 'https://code.jquery.com/jquery-2.2.0.min',
             'timer': '../js/timer',
-            'states': '../js/states'
+            'states': '../js/states',
+            'beeper': '../js/beeper'
         }
     });
 
-    require(['jquery', 'timer', 'states'], function ($, timer, states) {
+    require(['jquery', 'timer', 'states', 'beeper'], function ($, timer, states, beeper) {
         $(function () {
 
             var container = $('#container');
@@ -61,6 +62,7 @@
                     container.removeClass('running').addClass('timeout');
                     runButton.text('Start');
                     stopButton.attr('disabled', 'disabled');
+                    beeper.beep();
                 }
             }
 
