@@ -1,15 +1,31 @@
 "use strict";
 
-
 var TimerDisplay = React.createClass({
 	render: function() {
 		return (
+			<div id='timer'>00:00</div>
+		);
+	},	
+});
+
+var TimerControls = React.createClass({
+	render: function() {
+		return (
+			<div id="actions">
+				<button id="runButton" className="actionButton" disabled="disabled">Start</button>
+				<button id="stopButton" className="actionButton" disabled="disabled">Stop</button>
+			 </div>
+		);
+	},	
+});
+
+
+var Timer = React.createClass({
+	render: function() {
+		return (
 			<div id='container' className='init'>
-				<div id='timer'>00:00</div>
-				<div id="actions">
-					<button id="runButton" className="actionButton" disabled="disabled">Start</button>
-					<button id="stopButton" className="actionButton" disabled="disabled">Stop</button>
-				 </div>
+				<TimerDisplay />
+				<TimerControls />
 			</div>
 		);
 	},	
@@ -17,4 +33,4 @@ var TimerDisplay = React.createClass({
 
 
 var mainElement = document.querySelector("main");
-ReactDOM.render(<TimerDisplay />, mainElement);
+ReactDOM.render(<Timer />, mainElement);
