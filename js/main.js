@@ -1,6 +1,3 @@
-/**
- * Created by Gareth.Stephenson1 on 2016-02-03.
- */
 (function () {
     require.config({
         paths: {
