@@ -36,7 +36,6 @@ var MainComponent = React.createClass({
 	},	
 });
 
+
 var mainElement = document.querySelector("main");
-ReactDOM.render(
-	<MainComponent />
-, mainElement);
+ReactDOM.render(<TimerDisplay />, mainElement);
