@@ -1,0 +1,51 @@
+@font-face {
+    font-family: mobClock;
+    src: url(../fonts/lcd-n___-webfont.woff);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#container {
+    font-size: 100px;
+    text-align: center;
+    height: 100%;
+    position: relative;
+}
+
+#timer {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    font-family: mobClock;
+    color: white;
+    text-shadow: 2px 2px #000000;
+}
+
+#actions {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.actionButton {
+    font-size: 30px;
+}
+
+.init {
+    background-color: blue;
+}
+
+.running {
+    background-color: green;
+}
+
+.timeout {
+    background-color: red;
+}
+
+.paused {
+    background-color: orange;
+}
